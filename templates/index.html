@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Language" content="en">
+	<title>Web Tools</title>
+
+	<link
+		rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+	>
+    
+</head>
+<body>
+    
+	<section class="hero">
+		<div class="hero-body">
+			<p class="title">COOP Bank to OSM Accounts Conversion</p>
+			<p class="subtitle">Use the tools below to convert your COOP Bank statements to OSM-compatible format</p>
+		</div>
+	</section>
+
+	<div id="maincontent" class="container">
+
+		<div class="columns">
+
+			<div class="column">
+				<div class="card">
+
+					<header class="card-header">
+						<div class="card-header-title">
+							<div class="media">
+								<div class="media-left">
+									<span class="icon is-medium has-background-primary has-text-black">
+										<ion-icon name="cash-outline" />
+									</span>
+								</div>
+								<div class="media-content">
+									<p class="title is-3">Statement conversion tools</p>
+								</div>
+							</div>
+						</div>
+					</header>
+
+					<div class="card-content">
+						<div class="block">
+							Clean up downloaded CO-OP Bank statements (XLSX file) to enable it to be imported and used in the OSM accounting system.
+						</div>
+
+						<div class="content">
+							<ol>
+								<li>Select the statement file to be processed.</li>
+								<li>Click the "Clean up" button.</li>
+								<li>The cleaned file will be downloaded automatically.</li>
+							</ol>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="columns">
+
+			<div class="column">
+				<div class="card">
+					<form id="form" enctype="multipart/form-data" action="/coop30day-osm" method="post">
+
+						<header class="card-header">
+							<div class="card-header-title">
+								<div class="media">
+									<div class="media-content">
+										<p class="title is-4">30 day statement</p>
+									</div>
+								</div>
+							</div>
+						</header>
+
+						<div class="card-content">
+							
+							<div id="file30" class="file has-name is-fullwidth">
+								<label class="file-label">
+									<input class="file-input" type="file" accept=".xlsx" name="inputFile" />
+									<span class="file-cta">
+										<span class="file-icon">
+											<ion-icon name="cloud-upload" />
+										</span>
+										<span class="file-label"> Choose a file… </span>
+									</span>
+									<span class="file-name"> select a file to process</span>
+								</label>
+							</div>
+						</div>
+
+						<footer class="card-footer">
+							<div class="control card-footer-item">
+								<!-- <input type='submit' value='submit'> -->
+								<button class="button is-success">Clean up</button>
+							</div>
+						</footer>
+
+					</form>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="card">
+					<form id="formCustom" enctype="multipart/form-data" action="/coopcustom-osm" method="post">
+
+						<header class="card-header">
+							<div class="card-header-title">
+								<div class="media">
+									<div class="media-content">
+										<p class="title is-4">Custom statement</p>
+									</div>
+								</div>
+							</div>
+						</header>
+
+						<div class="card-content">
+							
+							<div id="fileCustom" class="file has-name is-fullwidth">
+								<label class="file-label">
+									<input class="file-input" type="file" accept=".xlsx" name="inputFile" />
+									<span class="file-cta">
+										<span class="file-icon">
+											<ion-icon name="cloud-upload" />
+										</span>
+										<span class="file-label"> Choose a file… </span>
+									</span>
+									<span class="file-name"> select a file to process</span>
+								</label>
+							</div>
+						</div>
+
+						<footer class="card-footer">
+							<div class="control card-footer-item">
+								<!-- <input type='submit' value='submit'> -->
+								<button class="button is-success">Clean up</button>
+							</div>
+						</footer>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+	<script>
+	const fileInput30 = document.querySelector("#file30 input[type=file]");
+	fileInput30.onchange = () => {
+		if (fileInput30.files.length > 0) {
+			const fileName = document.querySelector("#file30 .file-name");
+			fileName.textContent = fileInput30.files[0].name;
+		}
+	};
+	
+	const fileInputCustom = document.querySelector("#fileCustom input[type=file]");
+	fileInputCustom.onchange = () => {
+		if (fileInputCustom.files.length > 0) {
+			const fileName = document.querySelector("#fileCustom .file-name");
+			fileName.textContent = fileInputCustom.files[0].name;
+		}
+	};
+	</script>
+		
+</body>
+</html>
