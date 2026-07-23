@@ -30,8 +30,8 @@ func main() {
 // response headers on every request.
 func securityHeaders(next http.Handler) http.Handler {
 	const csp = "default-src 'self'; " +
-		"style-src 'self' https://cdn.jsdelivr.net; " +
-		"script-src 'self' https://unpkg.com 'sha256-FruV5A/1bRz0wcIwjTzrQ4MrCrBRSaobjSzOBRq4mSY='; " +
+		"style-src 'self' https://cdn.jsdelivr.net 'sha256-NBfyYgxoWTkJ9SyHWLNVIq8UkKGvsaGPAaGmNMpVMSA='; " +
+		"script-src 'self' https://unpkg.com 'sha256-y4IBTcKt6iWHZYdO43w0LV+Ht5d05YkanaOHmL63+VU='; " +
 		"img-src 'self' data: https://unpkg.com; " +
 		"font-src 'self'; " +
 		"connect-src 'self' https://unpkg.com; " +
