@@ -32,9 +32,9 @@ func securityHeaders(next http.Handler) http.Handler {
 	const csp = "default-src 'self'; " +
 		"style-src 'self' https://cdn.jsdelivr.net; " +
 		"script-src 'self' https://unpkg.com 'sha256-FruV5A/1bRz0wcIwjTzrQ4MrCrBRSaobjSzOBRq4mSY='; " +
-		"img-src 'self' data:; " +
+		"img-src 'self' data: https://unpkg.com; " +
 		"font-src 'self'; " +
-		"connect-src 'self'; " +
+		"connect-src 'self' https://unpkg.com; " +
 		"worker-src 'self' blob:; " +
 		"form-action 'self'; " +
 		"base-uri 'self'; " +
